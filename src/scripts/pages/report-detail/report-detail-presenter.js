@@ -78,6 +78,19 @@ export default class ReportDetailPresenter {
     }
   }
 
+  async notifyMe() {
+    try {
+      const response = await this.#apiModel.sendReportToMeViaNotification(this.#reportId);
+      if (!response.ok) {
+        console.error('notifyMe: response:', response);
+        return;
+      }
+      console.log('notifyMe:', response.message);
+    } catch (error) {
+      console.error('notifyMe: error:', error);
+    }
+  }
+
   showSaveButton() {
     if (this.#isReportSaved()) {
       this.#view.renderRemoveButton();

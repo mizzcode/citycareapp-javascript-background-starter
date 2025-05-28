@@ -2,9 +2,14 @@ self.addEventListener('push', (event) => {
   console.log("Service Worker pushing...");
 
   async function chainPromise() {
-    await self.registration.showNotification('Ada laporan baru untuk anda!', {
-      body: "Terjadi kerusakan lampu jalan di Jl. Melati"
+    const data = await event.data.json();
+    console.log("Push data:", data);
+    
+    await self.registration.showNotification(data.title, {
+      body: data.options.body
     })
+
+
   }
 
   event.waitUntil(chainPromise());
