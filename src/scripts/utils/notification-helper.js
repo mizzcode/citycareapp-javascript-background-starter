@@ -34,7 +34,7 @@ export async function requestNotificationPermission() {
     alert('Izin notifikasi ditolak.');
     return false;
   }
- 
+
   if (status === 'default') {
     alert('Izin notifikasi ditutup atau diabaikan.');
     return false;
