@@ -8,8 +8,6 @@ self.addEventListener('push', (event) => {
     await self.registration.showNotification(data.title, {
       body: data.options.body
     })
-
-
   }
 
   event.waitUntil(chainPromise());
